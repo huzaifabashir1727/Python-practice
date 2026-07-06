@@ -8,16 +8,30 @@ def decorator(task):
         Functioncall = task()
         end = time.time()
         
+        Totaltime = end - Starttime
+        print(f"Total time: {Totaltime:.4f} seconds")
+        
         return Functioncall
     
     return timer
 
 @decorator
 def increment():
-    for num in list:
-        num = num + 2
+    for i in range(len(list)):
+        list[i] = list[i] + 2
+        
+    print(list)
 
 @decorator
 def Poppingmethod():
     list.pop()
+    print(list)
     
+@decorator
+def display():
+    for num in list:
+        print(num)
+        
+increment()
+Poppingmethod()
+display()
