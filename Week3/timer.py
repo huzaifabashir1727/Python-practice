@@ -1,11 +1,13 @@
 import time
+from functools import wraps
 
 list = [2,4,6,8,10]
 
 def decorator(task):
-    def timer():
+    # @wraps(task)
+    def timer(*args):
         Starttime = time.time()
-        Functioncall = task()
+        Functioncall = task(*args)
         end = time.time()
         
         Totaltime = end - Starttime
@@ -23,7 +25,7 @@ def increment():
     print(list)
 
 @decorator
-def Poppingmethod():
+def popping_method():
     list.pop()
     print(list)
     
@@ -32,6 +34,15 @@ def display():
     for num in list:
         print(num)
         
+@decorator
+def add_item(*item):
+    list.extend(item)
+    print(list)
+
 increment()
-Poppingmethod()
+popping_method()
 display()
+add_item(100,32)
+
+print(add_item.__name__)
+print(add_item.__doc__) 
