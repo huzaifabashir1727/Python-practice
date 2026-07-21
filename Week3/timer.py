@@ -4,7 +4,7 @@ from functools import wraps
 list = [2,4,6,8,10]
 
 def decorator(task):
-    # @wraps(task)
+    @wraps(task)
     def timer(*args):
         Starttime = time.time()
         Functioncall = task(*args)
